@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeWave - Innowacyjna Technologia Fototerapii i Fotobiomodulacji</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        .hero-image {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://cdn.sanity.io/images/abq8rp7f/production/00cd7cf002f19faf11a5cb9c457fb496ad39a045-3840x2160.jpg?rect=598,0,2828,2160&auto=format');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 500px;
+        }
+        .product-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .accordion-header {
+            cursor: pointer;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-content.active {
+            max-height: 1000px;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .testimonial-card {
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: '"';
+            font-size: 5rem;
+            position: absolute;
+            top: -15px;
+            left: 10px;
+            color: rgba(59, 130, 246, 0.1);
+            font-family: Georgia, serif;
+        }
+        .product-overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .product-card:hover .product-overlay {
+            opacity: 1;
+        }
+        @media print {
+            .hero-image {
+                height: auto;
+                min-height: 300px;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .page-break {
+                page-break-after: always;
+            }
+        }
+        .social-icon {
+            transition: transform 0.3s ease;
+        }
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Nawigacja -->
+    <nav class="bg-white shadow-md fixed w-full z-10 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-4">
+                    <div class="flex items-center py-4">
+                        <span class="font-bold text-xl text-blue-600">LifeWave</span>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-1">
+                        <a href="#technologia" class="py-4 px-2 text-gray-500 hover:text-blue-500 transition duration-300">Technologia</a>
+                        <a href="#wynalazca" class="py-4 px-2 text-gray-500 hover:text-blue-500 transition duration-300">Wynalazca</a>
+                        <a href="#produkty" class="py-4 px-2 text-gray-500 hover:text-blue-500 transition duration-300">Produkty</a>
+                        <a href="#peptydy" class="py-4 px-2 text-gray-500 hover:text-blue-500 transition duration-300">Peptydy Miedzi</a>
+                        <a href="#opinie" class="py-4 px-2 text-gray-500 hover:text-blue-500 transition duration-300">Opinie</a>
+                        <a href="#faq" class="py-4 px-2 text-gray-500 hover:text-blue-500 transition duration-300">FAQ</a>
+                        <a href="#kontakt" class="py-4 px-2 text-gray-500 hover:text-blue-500 transition duration-300">Kontakt</a>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="https://lifewave.com/sylwesterk" target="_blank" class="py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 transition duration-300">Zamów Teraz</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="mobile-menu-button p-4 focus:outline-none">
+                        <svg class="h-6 w-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="hidden mobile-menu md:hidden">
+            <a href="#technologia" class="block py-2 px-4 text-sm hover:bg-gray-200">Technologia</a>
+            <a href="#wynalazca" class="block py-2 px-4 text-sm hover:bg-gray-200">Wynalazca</a>
+            <a href="#produkty" class="block py-2 px-4 text-sm hover:bg-gray-200">Produkty</a>
+            <a href="#peptydy" class="block py-2 px-4 text-sm hover:bg-gray-200">Peptydy Miedzi</a>
+            <a href="#opinie" class="block py-2 px-4 text-sm hover:bg-gray-200">Opinie</a>
+            <a href="#faq" class="block py-2 px-4 text-sm hover:bg-gray-200">FAQ</a>
+            <a href="#kontakt" class="block py-2 px-4 text-sm hover:bg-gray-200">Kontakt</a>
+            <a href="https://lifewave.com/sylwesterk" target="_blank" class="block py-2 px-4 text-sm bg-blue-600 text-white">Zamów Teraz</a>
+        </div>
+    </nav>
+
+    <!-- Sekcja Hero -->
+    <section class="hero-image flex items-center justify-center pt-16">
+        <div class="text-center px-4">
+            <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-4">LifeWave - Innowacyjna Technologia Fototerapii</h1>
+            <p class="text-xl text-white mb-8">Odkryj siłę naturalnej biomodulacji i peptydy miedzi</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#produkty" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 shadow-lg">Zobacz Produkty</a>
+                <a href="#technologia" class="bg-white text-blue-600 hover:bg-blue-100 py-3 px-6 rounded-full font-bold shadow-lg transition duration-300">Dowiedz się więcej</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcja Technologia -->
+    <section id="technologia" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Technologia Fototerapii i Fotobiomodulacji</h2>
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-600">Jak działa fotobiomodulacja?</h3>
+                    <p class="text-gray-700 mb-4">Fotobiomodulacja (PBM) to innowacyjna metoda terapeutyczna, która wykorzystuje światło o określonej długości fali do stymulacji procesów biologicznych w organizmie. Technologia ta znana jest również jako terapia laserowa niskiego poziomu (LLLT).</p>
+                    <p class="text-gray-700 mb-4">Ludzkie ciało naturalnie emituje ciepło, w tym ciepło w spektrum podczerwieni. Plastry LifeWave zostały zaprojektowane, aby przechwytywać tę energię podczerwieni i odbijać ją z powrotem, stymulując określone punkty na skórze, co prowadzi do poprawy ogólnego stanu zdrowia.</p>
+                    <p class="text-gray-700 mb-4">Kluczowym elementem działania plastrów LifeWave jest ich zdolność do stymulowania naturalnej produkcji określonych peptydów miedzi, takich jak GHK-Cu i AHK-Cu, które mają udowodnione działanie regeneracyjne i przeciwstarzeniowe.</p>
+                </div>
+                <div class="md:w-1/2 bg-gray-100 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-600">Naukowo potwierdzone korzyści fotobiomodulacji:</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Zwiększenie produkcji ATP (adenozynotrifosforanu) - głównego nośnika energii w komórkach</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Zwiększenie syntezy kolagenu i elastyny, wspierając regenerację tkanek</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Redukcja stanów zapalnych poprzez modulację mediatorów zapalnych</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Wspieranie aktywności komórek macierzystych i procesów regeneracyjnych</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Poprawa mikrokrążenia i dotlenienia tkanek</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcja Jak działają plastry LifeWave -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Jak działają plastry LifeWave?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="h-14 w-14 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <svg class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3">Przechwytywanie Energii</h3>
+                    <p class="text-gray-600 text-center">Plastry LifeWave przechwytują naturalnie emitowaną przez ciało energię podczerwoną i przekształcają ją w użyteczną formę.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="h-14 w-14 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <svg class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3">Odbijanie Światła</h3>
+                    <p class="text-gray-600 text-center">Specjalnie zaprojektowane materiały odbijają światło z powrotem do organizmu na określonych długościach fal, które stymulują procesy biologiczne.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="h-14 w-14 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <svg class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3">Aktywacja Biologiczna</h3>
+                    <p class="text-gray-600 text-center">Stymulowane punkty na skórze aktywują procesy biologiczne, zwiększając produkcję peptydów miedzi i innych bioaktywnych cząsteczek.</p>
+                </div>
+            </div>
+            <div class="mt-12 bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-4 text-blue-600">Kluczowe cechy technologii LifeWave:</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-start">
+                        <svg class="h-6 w-6 text-blue-500 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                        <div>
+                            <h4 class="font-medium">Nieinwazyjność</h4>
+                            <p class="text-gray-600 text-sm">Plastry są nieinwazyjne i nie wprowadzają żadnych substancji do organizmu.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <svg class="h-6 w-6 text-blue-500 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                        <div>
+                            <h4 class="font-medium">Brak Chemikaliów</h4>
+                            <p class="text-gray-600 text-sm">Działanie oparte wyłącznie na fizycznych właściwościach światła, bez użycia leków czy stymulantów.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <svg class="h-6 w-6 text-blue-500 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                        <div>
+                            <h4 class="font-medium">Łatwość Użycia</h4>
+                            <p class="text-gray-600 text-sm">Proste w aplikacji, wystarczy nakleić na czystą skórę i nosić przez określony czas.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <svg class="h-6 w-6 text-blue-500 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                        <div>
+                            <h4 class="font-medium">Opatentowana Technologia</h4>
+                            <p class="text-gray-600 text-sm">Chroniona ponad 130 patentami i ciągle rozwijana przez zespół naukowców.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcja Wynalazca -->
+    <section id="wynalazca" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <img src="https://cdn.sanity.io/images/abq8rp7f/production/c36bada09048b3183deaabb107fe6bf65ecded99-440x586.png"?rect=598,0,2828,2160&auto=format" alt="David Schmidt" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-6 text-blue-600">David Schmidt - Wizjoner i Wynalazca</h2>
+                    <p class="text-gray-700 mb-4">David Schmidt jest założycielem i przewodniczącym zarządu LifeWave, a także wynalazcą technologii LifeWave. Jego doświadczenie w biznesie i rozwoju produktów obejmuje ponad 30 lat i obejmuje formalną edukację w zakresie Systemów Zarządzania Informacją i Biologii na Uniwersytecie Pace w Pleasantville, NY.</p>
+                    <p class="text-gray-700 mb-4">W trakcie swojej kariery, David odegrał kluczową rolę w rozwoju technologii produkcji energii zarówno dla zastosowań wojskowych, jak i komercyjnych. Został zaproszony przez Marynarkę Wojenną USA do udziału w elitarnym zespole badawczym, którego zadaniem było opracowanie produktu pomagającego załogom mini-łodzi podwodnych pozostać czujnym bez użycia narkotyków czy stymulantów.</p>
+                    <p class="text-gray-700 mb-6">Poprzez te intensywne badania, David opracował plaster, który zwiększałby energię w organizmie przy użyciu fototerapii. To stało się pierwszym prototypem LifeWave: Energy Enhancer. Obecnie jego misją jest poprawa zdrowia i wydłużenie życia na całym świecie dzięki tej innowacyjnej technologii noszonej na ciele.</p>
+                    <div class="bg-gray-100 p-4 rounded-lg shadow-sm">
+                        <h3 class="text-lg font-semibold mb-2">Imponujące osiągnięcia:</h3>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>Ponad <strong>130 patentów</strong> na całym świecie</li>
+                            <li>Ponad 70 patentów w dziedzinie nauki i technologii regeneracyjnej</li>
+                            <li>Twórca Double Helix Conductor - innowacyjnej technologii przyspieszającej gojenie ran</li>
+                            <li>Doktorat honoris causa od Dr. Alexandra Marinaccio z International Hall of Fame of Inventors</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcja Produkty -->
+    <section id="produkty" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Produkty LifeWave</h2>
+            
+            <!-- Przyciski filtrowania -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10">
+                <button class="filter-btn active bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-full transition duration-300" data-filter="all">Wszystkie</button>
+                <button class="filter-btn bg-gray-200 hover:bg-blue-700 hover:text-white text-gray-700 py-2 px-4 rounded-full transition duration-300" data-filter="main">Główne Produkty</button>
+                <button class="filter-btn bg-gray-200 hover:bg-blue-700 hover:text-white text-gray-700 py-2 px-4 rounded-full transition duration-300" data-filter="yage">Linia Y-Age</button>
+                <button class="filter-btn bg-gray-200 hover:bg-blue-700 hover:text-white text-gray-700 py-2 px-4 rounded-full transition duration-300" data-filter="other">Pozostałe</button>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- X39 -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden filter-item main">
+                    <img src="https://cdn.sanity.io/images/abq8rp7f/production/9c51c2e4938aa814efc59751e09a62f5e5604f6c-811x661.jpg?auto=format" alt="LifeWave X39" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">LifeWave X39</h3>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">Bestseller</span>
+                        </div>
+                        <p class="text-gray-700 mb-4">Pierwszy produkt zwiększający poziom peptydu GHK-Cu, wspierający regenerację komórek macierzystych i poprawiający ogólny stan zdrowia.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">149,95 €</span>
+                            <a href="#x39-details" class="text-blue-600 hover:text-blue-800 font-medium product-details-btn" data-product="x39">Szczegóły &rarr;</a>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <!-- X49 -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden filter-item main">
+                    <img src="https://cdn.sanity.io/images/abq8rp7f/production/60587dad43739296acc9f2d077d6c5fbb1ae95be-811x661.jpg?auto=format" alt="LifeWave X49" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">LifeWave X49</h3>
+                            <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Nowy Produkt</span>
+                        </div>
+                        <p class="text-gray-700 mb-4">Zwiększa poziom peptydu AHK-Cu, wspierając wydajność fizyczną, siłę i wytrzymałość. Idealny dla osób aktywnych.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">149,95 €</span>
+                            <a href="#x49-details" class="text-blue-600 hover:text-blue-800 font-medium product-details-btn" data-product="x49">Szczegóły &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aeon -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden filter-item yage">
+                    <img src="https://cdn.sanity.io/images/abq8rp7f/production/d5295b198e6c66ec4720a9c0c31678c7395628f1-811x661.jpg?auto=format" alt="LifeWave Y-Age Aeon" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">Y-Age Aeon</h3>
+                            <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded">Redukcja stresu</span>
+                        </div>
+                        <p class="text-gray-700 mb-4">Zaprojektowany, aby pomóc w redukcji stresu, stymulować "reakcję anty-stresową" w organizmie i promować relaksację.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">79,95 €</span>
+                            <a href="#aeon-details" class="text-blue-600 hover:text-blue-800 font-medium product-details-btn" data-product="aeon">Szczegóły &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Glutathione -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden filter-item yage">
+                    <img src="https://cdn.sanity.io/images/abq8rp7f/production/c2776607fcd5a7dd11b9883ab9b39a7a129cb7ff-811x661.jpg?auto=format" alt="LifeWave Y-Age Glutathione" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">Y-Age Glutathione</h3>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">Detoksykacja</span>
+                        </div>
+                        <p class="text-gray-700 mb-4">Wspiera naturalny poziom glutationu w organizmie, silnego przeciwutleniacza pomagającego w detoksykacji i ochronie komórek.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">79,95 €</span>
+                            <a href="#glutathione-details" class="text-blue-600 hover:text-blue-800 font-medium product-details-btn" data-product="glutathione">Szczegóły &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carnosine -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden filter-item yage">
+                    <img src="https://cdn.sanity.io/images/abq8rp7f/production/3ba638b22ce3bf977e6df6b3e1fcf7638848775b-811x661.jpg?auto=format" alt="LifeWave Y-Age Carnosine" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">Y-Age Carnosine</h3>
+                            <span class="bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded">Mobilność</span>
+                        </div>
+                        <p class="text-gray-700 mb-4">Zwiększa produkcję karnozyny, naturalnie występującego aminokwasu o właściwościach przeciwutleniających, wspierającego mobilność i elastyczność.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">79,95 €</span>
+                            <a href="#carnosine-details" class="text-blue-600 hover:text-blue-800 font-medium product-details-btn" data-product="carnosine">Szczegóły &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Y-Age System Kit -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden filter-item yage">
+                    <img src="https://cdn.sanity.io/images/abq8rp7f/production/9471050fa937b88fb29033f4bc31635a940e4144-811x661.jpg?auto=format" alt="LifeWave Y-Age System Kit" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">Y-Age System Kit</h3>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">Zestaw</span>
+                        </div>
+                        <p class="text-gray-700 mb-4">Kompletny zestaw zawierający plastry Y-Age Aeon, Glutathione i Carnosine. Idealne rozwiązanie dla kompleksowej poprawy zdrowia.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">209,85 €</span>
+                            <a href="#yage-kit-details" class="text-blue-600 hover:text-blue-800 font-medium">Szczegóły &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IceWave -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden filter-item other">
+                    <img src="https://cdn.sanity.io/images/abq8rp7f/production/b0a4f68dd61f7c300ef6348ca239cff2b224e42c-811x661.jpg?auto=format" alt="LifeWave IceWave" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">IceWave</h3>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded">Komfort</span>
+                        </div>
+                        <p class="text-gray-700 mb-4">Zaprojektowany, aby zapewnić szybką ulgę dla doraźnego dyskomfortu. Działa w ciągu kilku minut od aplikacji.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">79,95 €</span>
+                            <a href="#icewave-details" class="text-blue-600 hover:text-blue-800 font-medium">Szczegóły &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Energy Enhancer -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden filter-item other">
+                    <img src="https://cdn.sanity.io/images/abq8rp7f/production/eb8595dcd4a019e4880533b6b2b738617afec881-811x661.jpg?auto=format" alt="LifeWave Energy Enhancer" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">Energy Enhancer</h3>
+                            <span class="bg-orange-100 text-orange-800 text-xs font-semibold px-2.5 py-0.5 rounded">Energia</span>
+                        </div>
+                        <p class="text-gray-700 mb-4">Pierwszy produkt LifeWave, zaprojektowany by zwiększać poziom energii i wydolność fizyczną poprzez stymulację punktów akupunkturowych.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">79,95 €</span>
+                            <a href="#energy-details" class="text-blue-600 hover:text-blue-800 font-medium">Szczegóły &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Silent Nights -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden filter-item other">
+                    <img src="https://cdn.sanity.io/images/abq8rp7f/production/bbbd7af8e0a4a1cc1e325a4d4fc4d9fb99c4d4cb-811x661.jpg?auto=format" alt="LifeWave Silent Nights" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">Silent Nights</h3>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">Sen</span>
+                        </div>
+                        <p class="text-gray-700 mb-4">Wspiera naturalną produkcję melatoniny w organizmie, pomagając w poprawie jakości snu bez efektów ubocznych.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">79,95 €</span>
+                            <a href="#silent-details" class="text-blue-600 hover:text-blue-800 font-medium">Szczegóły &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reklama pakietu -->
+            <div class="mt-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg shadow-xl p-8 text-white">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-2/3 mb-6 md:mb-0 md:pr-8">
+                        <h3 class="text-2xl font-bold mb-3">Pakiet Wydajnościowy X39 & X49</h3>
+                        <p class="mb-4">Połącz moc dwóch najnowszych technologii LifeWave i oszczędź! Pakiet zawiera 30 plastrów X39 i 30 plastrów X49.</p>
+                        <ul class="mb-6 space-y-2">
+                            <li class="flex items-center">
+                                <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Zwiększona regeneracja komórek macierzystych
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Lepsza wydajność fizyczna i szybsza regeneracja
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Oszczędność Gratis !
+                            </li>
+                        </ul>
+                        <a href="https://lifewave.com/sylwesterk" target="_blank" class="inline-block bg-white text-blue-600 font-bold py-3 px-6 rounded-full shadow-lg hover:bg-blue-100 transition duration-300">Zamów pakiet teraz</a>
+                    </div>
+                    <div class="md:w-1/3">
+                        <img src="https://cdn.sanity.io/images/abq8rp7f/production/cdaaa136e88c0b0125f57f8dac8d606c179b5eee-811x661.jpg?auto=format" alt="X39 & X49 Performance Bundle" class="rounded-lg shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal detale produktów -->
+        <div id="product-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+            <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                <div class="relative">
+                    <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                    
+                    <!-- X39 Details -->
+                    <div id="x39-details" class="product-detail hidden">
+                        <div class="p-6 md:p-8">
+                            <div class="flex flex-col md:flex-row">
+                                <div class="md:w-1/2 md:pr-6">
+                                    <img src="https://cdn.sanity.io/images/abq8rp7f/production/9c51c2e4938aa814efc59751e09a62f5e5604f6c-811x661.jpg?auto=format" alt="LifeWave X39" class="rounded-lg shadow-md mb-4">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-2xl font-bold text-blue-600">149,95 €</span>
+                                        <a href="https://lifewave.com/sylwesterk" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">Zamów Teraz</a>
+                                    </div>
+                                </div>
+                                <div class="md:w-1/2 mt-6 md:mt-0">
+                                    <h2 class="text-2xl font-bold text-blue-600 mb-4">LifeWave X39</h2>
+                                    <p class="text-gray-700 mb-4">Optymalne zdrowie i dobre samopoczucie są teraz na wyciągnięcie ręki dzięki X39 - nowemu podejściu do poprawy przepływu energii w organizmie, zwiększenia siły, wytrzymałości i nie tylko. Poprzez delikatną stymulację skóry światłem, nasze nieinwazyjne plastry poprawiające samopoczucie pomagają w aktywnym stylu życia i torują nową drogę do zdrowia.</p>
+                                    
+                                    <h3 class="text-lg font-semibold mt-4 mb-2">Kluczowe korzyści:</h3>
+                                    <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                                        <li>Nowa technologia stymuluje skórę niskimi poziomami światła, poprawiając przepływ energii</li>
+                                        <li>Wspiera lepszą wydajność podczas ćwiczeń</li>
+                                        <li>Wspiera poprawę siły i wytrzymałości</li>
+                                        <li>Wspiera ogólne zdrowie i dobre samopoczucie</li>
+                                        <li>Bez leków czy stymulantów</li>
+                                        <li>Opatentowana forma fototerapii</li>
+                                    </ul>
+                                    
+                                    <h3 class="text-lg font-semibold mt-4 mb-2">Peptyd GHK-Cu:</h3>
+                                    <p class="text-gray-700 mb-4">X39 został zaprojektowany, aby podnieść poziom peptydu GHK-Cu (glicylo-L-histydylo-L-lizynowo-miedziowy) w organizmie. GHK-Cu to naturalnie występujący peptyd, który odgrywa kluczową rolę w procesach regeneracyjnych, w tym aktywacji komórek macierzystych, produkcji kolagenu i gojeniu tkanek. Badania kliniczne wykazały, że X39 znacząco podnosi poziom GHK-Cu we krwi już po jednym tygodniu stosowania.</p>
+                                    
+                                    <div class="bg-blue-50 p-4 rounded-lg mt-4">
+                                        <h3 class="text-lg font-semibold mb-2">Instrukcja użycia:</h3>
+                                        <p class="text-gray-700">Umieść jeden plaster X39 na czystej, suchej skórze rano. Plastry mogą być noszone do 12 godzin przed wyrzuceniem. Pamiętaj o odpowiednim nawodnieniu podczas korzystania z produktu.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- X49 Details -->
+                    <div id="x49-details" class="product-detail hidden">
+                        <div class="p-6 md:p-8">
+                            <div class="flex flex-col md:flex-row">
+                                <div class="md:w-1/2 md:pr-6">
+                                    <img src="https://cdn.sanity.io/images/abq8rp7f/production/60587dad43739296acc9f2d077d6c5fbb1ae95be-811x661.jpg?auto=format" alt="LifeWave X49" class="rounded-lg shadow-md mb-4">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-2xl font-bold text-blue-600">149,95 €</span>
+                                        <a href="https://lifewave.com/sylwesterk" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">Zamów Teraz</a>
+                                    </div>
+                                </div>
+                                <div class="md:w-1/2 mt-6 md:mt-0">
+                                    <h2 class="text-2xl font-bold text-blue-600 mb-4">LifeWave X49</h2>
+                                    <p class="text-gray-700 mb-4">Wyrusz w transformacyjną podróż z X49, produktem dedykowanym poprawie wydajności, przyspieszeniu regeneracji i wspieraniu relaksacji. Teraz jest czas, aby na nowo zdefiniować swoją formę!</p>
+                                    
+                                    <h3 class="text-lg font-semibold mt-4 mb-2">Kluczowe korzyści:</h3>
+                                    <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                                        <li>Wspiera wydajność, siłę i wytrzymałość</li>
+                                        <li>Wspiera zdrowy układ sercowo-naczyniowy poprzez ćwiczenia</li>
+                                        <li>Skraca czas regeneracji po ćwiczeniach</li>
+                                        <li>Wspiera utrzymanie zdrowej wagi w połączeniu z dietą i programami ćwiczeń</li>
+                                        <li>Bez leków czy stymulantów</li>
+                                        <li>Opatentowana forma fototerapii</li>
+                                    </ul>
+                                    
+                                    <h3 class="text-lg font-semibold mt-4 mb-2">Peptyd AHK-Cu:</h3>
+                                    <p class="text-gray-700 mb-4">X49 podnosi poziom peptydu AHK-Cu (Ala-His-Lys-Cu) w organizmie. AHK-Cu to peptyd miedzi, który aktywuje komórki śródbłonka naczyniowego, wspierając zdrowy przepływ krwi, tworzenie kości, ścięgien i mięśni. Badania kliniczne wykazały znaczący wzrost stężenia AHK-Cu we krwi już po 24 godzinach od założenia plastra X49.</p>
+                                    
+                                    <div class="bg-blue-50 p-4 rounded-lg mt-4">
+                                        <h3 class="text-lg font-semibold mb-2">Instrukcja użycia:</h3>
+                                        <p class="text-gray-700">Umieść jeden plaster X49 na czystej, suchej skórze rano. Plastry mogą być noszone do 12 godzin przed wyrzuceniem. Pamiętaj o odpowiednim nawodnieniu podczas korzystania z produktu.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Aeon Details -->
+                    <div id="aeon-details" class="product-detail hidden">
+                        <div class="p-6 md:p-8">
+                            <div class="flex flex-col md:flex-row">
+                                <div class="md:w-1/2 md:pr-6">
+                                    <img src="https://cdn.sanity.io/images/abq8rp7f/production/d5295b198e6c66ec4720a9c0c31678c7395628f1-811x661.jpg?auto=format" alt="LifeWave Y-Age Aeon" class="rounded-lg shadow-md mb-4">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-2xl font-bold text-blue-600">79,95 €</span>
+                                        <a href="https://lifewave.com/sylwesterk" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">Zamów Teraz</a>
+                                    </div>
+                                </div>
+                                <div class="md:w-1/2 mt-6 md:mt-0">
+                                    <h2 class="text-2xl font-bold text-blue-600 mb-4">LifeWave Y-Age Aeon</h2>
+                                    <p class="text-gray-700 mb-4">Y-Age Aeon to innowacyjny plaster zaprojektowany, aby pomóc w redukcji stresu i promować relaksację. Wykorzystuje technologię fototerapii do stymulacji określonych punktów na skórze, wspierając równowagę systemu nerwowego.</p>
+                                    
+                                    <h3 class="text-lg font-semibold mt-4 mb-2">Kluczowe korzyści:</h3>
+                                    <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                                        <li>Wspiera redukcję stresu i promuje relaksację</li>
+                                        <li>Pomaga w utrzymaniu zdrowej równowagi układu nerwowego</li>
+                                        <li>Wspiera zdrową odpowiedź organizmu na stres</li>
+                                        <li>Może pomóc w zmniejszeniu stanów zapalnych</li>
+                                        <li>Bez leków czy stymulantów</li>
+                                        <li>Kompatybilny z innymi plastrami z linii Y-Age</li>
+                                    </ul>
+                                    
+                                    <h3 class="text-lg font-semibold mt-4 mb-2">Działanie:</h3>
+                                    <p class="text-gray-700 mb-4">Plaster Aeon działa poprzez stymulację określonych punktów na ciele, związanych z odpowiedzią organizmu na stres. Badania kliniczne wykazały, że Aeon może pomóc w zmniejszeniu "wieku biologicznego" poprzez redukcję stresu oksydacyjnego i stanów zapalnych.</p>
+                                    
+                                    <div class="bg-blue-50 p-4 rounded-lg mt-4">
+                                        <h3 class="text-lg font-semibold mb-2">Instrukcja użycia:</h3>
+                                        <p class="text-gray-700">Zmieniaj położenie plastra w punktach pokazanych w instrukcji, używając plastra Aeon 5-7 dni w tygodniu. Jeśli łączysz z Y-Age Carnosine lub Y-Age Glutathione, używaj dowolnych 2 plastrów na dowolnych 2 punktach Y-Age pokazanych w instrukcji, nakładając plastry na linię środkową lub prawą stronę ciała. Nałóż plaster na czystą, suchą skórę rano. Plastry mogą być noszone do 12 godzin przed wyrzuceniem.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Glutathione Details -->
+                    <div id="glutathione-details" class="product-detail hidden">
+                        <div class="p-6 md:p-8">
+                            <div class="flex flex-col md:flex-row">
+                                <div class="md:w-1/2 md:pr-6">
+                                    <img src="https://cdn.sanity.io/images/abq8rp7f/production/c2776607fcd5a7dd11b9883ab9b39a7a129cb7ff-811x661.jpg?auto=format" alt="LifeWave Y-Age Glutathione" class="rounded-lg shadow-md mb-4">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-2xl font-bold text-blue-600">79,95 €</span>
+                                        <a href="https://lifewave.com/sylwesterk" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">Zamów Teraz</a>
+                                    </div>
+                                </div>
+                                <div class="md:w-1/2 mt-6 md:mt-0">
+                                    <h2 class="text-2xl font-bold text-blue-600 mb-4">LifeWave Y-Age Glutathione</h2>
+                                    <p class="text-gray-700 mb-4">Y-Age Glutathione wspiera naturalne poziomy glutationu w organizmie - kluczowego przeciwutleniacza, który odgrywa istotną rolę w detoksykacji i ochronie komórek przed stresem oksydacyjnym.</p>
+                                    
+                                    <h3 class="text-lg font-semibold mt-4 mb-2">Kluczowe korzyści:</h3>
+                                    <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                                        <li>Wspiera naturalne poziomy glutationu w organizmie</li>
+                                        <li>Pomaga w ochronie komórek przed stresem oksydacyjnym</li>
+                                        <li>Wspiera procesy detoksykacji organizmu</li>
+                                        <li>Wspiera zdrową funkcję wątroby</li>
+                                        <li>Bez leków czy stymulantów</li>
+                                        <li>Kompatybilny z innymi plastrami z linii Y-Age</li>
+                                    </ul>
+                                    
+                                    <h3 class="text-lg font-semibold mt-4 mb-2">Glutation:</h3>
+                                    <p class="text-gray-700 mb-4">Glutation jest często nazywany "głównym przeciwutleniaczem" organizmu i odgrywa kluczową rolę w ochronie komórek przed uszkodzeniami oksydacyjnymi. Niestety, poziomy glutationu naturalnie spadają wraz z wiekiem. Badania wykazały, że plastry Y-Age Glutathione mogą znacząco zwiększyć poziom glutationu we krwi.</p>
+                                    
+                                    <div class="bg-blue-50 p-4 rounded-lg mt-4">
+                                        <h3 class="text-lg font-semibold mb-2">Instrukcja użycia:</h3>
+                                        <p class="text-gray-700">Zmieniaj położenie plastra w punktach pokazanych w instrukcji, używając plastra Glutathione 5-7 dni w tygodniu. Jeśli łączysz z Y-Age Aeon lub Y-Age Carnosine, używaj dowolnych 2 plastrów na dowolnych 2 punktach Y-Age pokazanych w instrukcji, nakładając plastry na linię środkową lub prawą stronę ciała. Nałóż plaster na czystą, suchą skórę rano. Plastry mogą być noszone do 12 godzin przed wyrzuceniem.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Carnosine Details -->
+                    <div id="carnosine-details" class="product-detail hidden">
+                        <div class="p-6 md:p-8">
+                            <div class="flex flex-col md:flex-row">
+                                <div class="md:w-1/2 md:pr-6">
+                                    <img src="https://cdn.sanity.io/images/abq8rp7f/production/3ba638b22ce3bf977e6df6b3e1fcf7638848775b-811x661.jpg?auto=format" alt="LifeWave Y-Age Carnosine" class="rounded-lg shadow-md mb-4">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-2xl font-bold text-blue-600">79,95 €</span>
+                                        <a href="https://lifewave.com/sylwesterk" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">Zamów Teraz</a>
+                                    </div>
+                                </div>
+                                <div class="md:w-1/2 mt-6 md:mt-0">
+                                    <h2 class="text-2xl font-bold text-blue-600 mb-4">LifeWave Y-Age Carnosine</h2>
+                                    <p class="text-gray-700 mb-4">Y-Age Carnosine podnosi produkcję karnozyny - naturalnie występującego aminokwasu o właściwościach przeciwutleniających. Wspiera mobilność, elastyczność, siłę i równowagę, dzięki czemu nie tylko nadążasz, ale prowadzisz.</p>
+                                    
+                                    <h3 class="text-lg font-semibold mt-4 mb-2">Kluczowe korzyści:</h3>
+                                    <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                                        <li>Wspiera produkcję karnozyny w organizmie</li>
+                                        <li>Pomaga w poprawie mobilności i elastyczności</li>
+                                        <li>Wspiera siłę mięśni i równowagę</li>
+                                        <li>Działa jako przeciwutleniacz</li>
+                                        <li>Bez leków czy stymulantów</li>
+                                        <li>Kompatybilny z innymi plastrami z linii Y-Age</li>
+                                    </ul>
+                                    
+                                    <h3 class="text-lg font-semibold mt-4 mb-2">Karnozyna:</h3>
+                                    <p class="text-gray-700 mb-4">Karnozyna to dipeptyd składający się z aminokwasów beta-alaniny i histydyny. Jest jednym z najsilniejszych przeciwutleniaczy występujących w organizmie, zwłaszcza w tkankach mięśniowych i nerwowych. Karnozyna pomaga chronić komórki przed uszkodzeniami, wspierając długowieczność i witalność.</p>
+                                    
+                                    <div class="bg-blue-50 p-4 rounded-lg mt-4">
+                                        <h3 class="text-lg font-semibold mb-2">Instrukcja użycia:</h3>
+                                        <p class="text-gray-700">Zmieniaj położenie plastra w punktach pokazanych w instrukcji, używając plastra Carnosine 1-3 dni w tygodniu. Jeśli łączysz z Y-Age Aeon lub Y-Age Glutathione, używaj dowolnych 2 plastrów na dowolnych 2 punktach Y-Age pokazanych w instrukcji, nakładając plastry na linię środkową lub prawą stronę ciała. Nałóż plaster na czystą, suchą skórę rano. Plastry mogą być noszone do 12 godzin przed wyrzuceniem.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcja Peptydy Miedzi -->
+    <section id="peptydy" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Peptydy Miedzi w Technologii LifeWave</h2>
+            
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/2 bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold text-blue-600 mb-4">GHK-Cu: Peptyd Regeneracyjny w X39</h3>
+
+
+ <img src="https://cdn.sanity.io/images/abq8rp7f/production/f3d35d34c0effd3a495a37388a4b3f2c41a2da66-550x440.jpg?auto=format" 
+
+
+
+                    <p class="text-gray-700 mb-4">GHK-Cu (glicylo-L-histydylo-L-lizynowo-miedziowy) to naturalnie występujący tripeptyd, który odgrywa kluczową rolę w procesach regeneracyjnych organizmu. Z wiekiem poziom GHK-Cu w organizmie spada, co przyczynia się do procesów starzenia.</p>
+                    
+                    <h4 class="text-lg font-semibold mt-4 mb-2">Funkcje GHK-Cu w organizmie:</h4>
+                    <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                        <li>Aktywacja komórek macierzystych do regeneracji tkanek</li>
+                        <li>Stymulacja produkcji kolagenu i elastyny</li>
+                        <li>Wspieranie gojenia ran i regeneracji tkanek</li>
+                        <li>Działanie przeciwzapalne i przeciwoksydacyjne</li>
+                        <li>Modulacja ekspresji genów związanych z regeneracją i naprawą</li>
+                    </ul>
+                    
+                    <h4 class="text-lg font-semibold mt-4 mb-2">X39 a poziom GHK-Cu:</h4>
+                    <p class="text-gray-700 mb-4">Badania kliniczne wykazały, że plastry X39 mogą znacząco podnieść poziom GHK-Cu we krwi już po jednym tygodniu stosowania. W podwójnie ślepym badaniu z wykorzystaniem placebo, uczestnicy noszący plastry X39 wykazali wzrost stężenia GHK-Cu w osoczu o 50-80% w porównaniu z wartościami wyjściowymi.</p>
+                    
+                    <div class="bg-white p-4 rounded-lg mt-4">
+                        <p class="text-gray-700 italic">"Badanie wykazało znaczący wzrost stężenia GHK-Cu we krwi w wyniku noszenia plastra LifeWave X39 przez 1 tydzień, w porównaniu do placebo." - z badania "Double-Blind Testing of the Lifewave X39 Patch to Determine GHK-Cu Production Levels"</p>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 bg-gradient-to-br from-green-50 to-teal-50 p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold text-green-600 mb-4">AHK-Cu: Peptyd Wydajnościowy w X49</h3>
+
+
+ <img src="https://cdn.sanity.io/images/abq8rp7f/production/cdc77b5a98c53f02c7141f2cf3676471981f4fdf-550x440.jpg?auto=format" 
+
+
+
+
+                    <p class="text-gray-700 mb-4">AHK-Cu (Ala-His-Lys-Cu) to peptyd miedzi, który jest analogiem GHK-Cu. Jest szczególnie skuteczny we wspieraniu funkcji związanych z wydajnością fizyczną, regeneracją mięśni i funkcjami układu sercowo-naczyniowego.</p>
+                    
+                    <h4 class="text-lg font-semibold mt-4 mb-2">Funkcje AHK-Cu w organizmie:</h4>
+                    <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                        <li>Aktywacja komórek śródbłonka naczyniowego wspierających zdrowy przepływ krwi</li>
+                        <li>Wsparcie tworzenia kości, ścięgien i mięśni</li>
+                        <li>Zmniejszenie bólu mięśni i przyspieszenie regeneracji</li>
+                        <li>Wsparcie zdrowia układu sercowo-naczyniowego</li>
+                        <li>Poprawa wydajności fizycznej i wytrzymałości</li>
+                    </ul>
+                    
+                    <h4 class="text-lg font-semibold mt-4 mb-2">X49 a poziom AHK-Cu:</h4>
+                    <p class="text-gray-700 mb-4">Badania kliniczne wykazały, że plastry X49 mogą znacząco zwiększyć stężenie AHK-Cu we krwi już po 24 godzinach od założenia plastra. W badaniu opublikowanym w International Journal of Sports and Exercise Medicine, uczestnicy wykazali znaczną poprawę wydajności ćwiczeń, siły i wytrzymałości w zakresie od 31% do 70% po 30-60 dniach stosowania plastrów X49.</p>
+                    
+                    <div class="bg-white p-4 rounded-lg mt-4">
+                        <p class="text-gray-700 italic">"To badanie wykazało znaczący wzrost stężenia AHK-Cu po zastosowaniu plastra LifeWave X49, co przekłada się na poprawę wydajności ćwiczeń, siły i wytrzymałości u uczestników w wieku 40-81 lat." - z badania "LifeWave X49TM Patch Supports Improved Results in Fitness, Strength and Stamina"</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-4 text-blue-600">Porównanie GHK-Cu i AHK-Cu:</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-200">
+                        <thead>
+                            <tr>
+                                <th class="py-3 px-4 bg-gray-100 text-left border-b">Cecha</th>
+                                <th class="py-3 px-4 bg-blue-100 text-left border-b">GHK-Cu (X39)</th>
+                                <th class="py-3 px-4 bg-green-100 text-left border-b">AHK-Cu (X49)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="py-3 px-4 border-b">Struktura</td>
+                                <td class="py-3 px-4 border-b">Glicylo-L-histydylo-L-lizyna-Cu</td>
+                                <td class="py-3 px-4 border-b">Ala-His-Lys-Cu</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 border-b">Główne działanie</td>
+                                <td class="py-3 px-4 border-b">Regeneracja tkanek, aktywacja komórek macierzystych</td>
+                                <td class="py-3 px-4 border-b">Wydajność fizyczna, regeneracja mięśni</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 border-b">Korzyści zdrowotne</td>
+                                <td class="py-3 px-4 border-b">Poprawa gojenia ran, redukcja zmarszczek, regeneracja tkanek</td>
+                                <td class="py-3 px-4 border-b">Poprawa siły i wytrzymałości, wsparcie układu sercowo-naczyniowego</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 border-b">Odpowiedni dla</td>
+                                <td class="py-3 px-4 border-b">Osoby poszukujące ogólnej poprawy zdrowia i regeneracji</td>
+                                <td class="py-3 px-4 border-b">Osoby aktywne fizycznie, sportowcy, seniorzy zainteresowani poprawą siły</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 border-b">Początek działania</td>
+                                <td class="py-3 px-4 border-b">Widoczne efekty po ok. 1-2 tygodniach</td>
+                                <td class="py-3 px-4 border-b">Pierwsze efekty już po 24 godzinach</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-gray-100 p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-6 text-center text-blue-600">Badania naukowe nad peptydami miedzi</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <h4 class="font-semibold mb-2">Double-Blind Testing of the Lifewave X39 Patch to Determine GHK-Cu Production Levels</h4>
+                        <p class="text-gray-700 text-sm mb-2">Badanie wykazało znaczący wzrost stężenia GHK-Cu we krwi u uczestników noszących plaster X39 przez 1 tydzień w porównaniu do grupy placebo.</p>
+                        <p class="text-gray-500 text-xs">Źródło: International Journal of Research, 2021</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <h4 class="font-semibold mb-2">LifeWave X49TM Patch Supports Improved Results in Fitness, Strength and Stamina</h4>
+                        <p class="text-gray-700 text-sm mb-2">Badanie wykazało, że plastry X49 znacząco zwiększają stężenie AHK-Cu, co przekłada się na poprawę wydajności fizycznej w zakresie 31-70% w ciągu 30-60 dni.</p>
+                        <p class="text-gray-500 text-xs">Źródło: International Journal of Sports and Exercise Medicine, 2023</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <h4 class="font-semibold mb-2">Regenerative and Protective Actions of the GHK-Cu Peptide in the Light of the New Gene Data</h4>
+                        <p class="text-gray-700 text-sm mb-2">Peptyd GHK-Cu wpływa na ekspresję genów związanych z regeneracją tkanek, zmniejszając stan zapalny i promując naprawę tkanek.</p>
+                        <p class="text-gray-500 text-xs">Źródło: International Journal of Molecular Sciences, 2018</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <h4 class="font-semibold mb-2">Bone and Muscle Support in Ageing Women with Life Wave X49 TM Patch</h4>
+                        <p class="text-gray-700 text-sm mb-2">Badanie wykazało, że plastry X49 wspierają zdrowie kości i mięśni u starzejących się kobiet poprzez zwiększenie poziomu AHK-Cu i wpływ na metabolizm kości.</p>
+                        <p class="text-gray-500 text-xs">Źródło: Biomedical Research, 2022</p>
+                    </div>
+                </div>
+
+          <div class="space-y-6 mb-10">
+                    <div class="bg-white p-6 rounded-lg shadow-md relative">
+                        <div class="timeline-dot"></div>
+                        <h3 class="text-xl font-bold mb-2">Double-blind testing of the Lifewave X39 patch to determine GHK-Cu production levels</h3>
+                        <p class="text-gray-600 mb-2">Connor, C., Connor, M., Yue, D., Eickhoff, J. (2021)</p>
+                        <p>Badanie to pokazuje wpływ noszenia nieinwazyjnego plastra fotobiomodulacyjnego LifeWave X39 na poziomy peptydu GHK-Cu w organizmie. Wyniki sugerują, że plastry X39 znacząco zwiększają poziom GHK-Cu we krwi.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md relative">
+                        <div class="timeline-dot"></div>
+                        <h3 class="text-xl font-bold mb-2">Phototherapy Induced Metabolism Change Produced by the LifeWave X39 Non-transdermal Patch</h3>
+                        <p class="text-gray-600 mb-2">Perry, M., MA, L.P. (2021)</p>
+                        <p>Badanie analizujące wpływ plastra X39 na metabolizm człowieka. Skupia się na stymulacji peptydu miedzi GHK-Cu i jego wpływie na procesy metaboliczne.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md relative">
+                        <div class="timeline-dot"></div>
+                        <h3 class="text-xl font-bold mb-2">LifeWave X39 Pilot Demonstrates Light Triggered Changes</h3>
+                        <p class="text-gray-600 mb-2">Connor, M., Connor, C., Gombosuren, N. (2020)</p>
+                        <p>Badanie pilotażowe pokazujące, jak plastry LifeWave X39 wywołują zmiany w organizmie poprzez stymulację światłem. Badanie podkreśla, że plastry pomagają stymulować organizm, wykorzystując naturalne światło podczerwone emitowane przez ciało.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md relative">
+                        <div class="timeline-dot"></div>
+                        <h3 class="text-xl font-bold mb-2">LifeWave X49TM Patch Supports Improved Results in Fitness, Strength and Stamina</h3>
+                        <p class="text-gray-600 mb-2">Connor, M.H., Connor, C.A., Dan, H., Dawei, Y. (2023)</p>
+                        <p>Badanie analizujące wpływ plastra X49 na poprawę wyników w zakresie sprawności fizycznej, siły i wytrzymałości. Plaster X49 wykorzystuje fototerapię do równoważenia organizmu i wspierania jego naturalnych funkcji.</p>
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcja Opinie -->
+    <section id="opinie" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Opinie Użytkowników</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-blue-600 font-bold text-xl">A</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Anna K.</h4>
+                            <p class="text-gray-500 text-sm">Użytkownik X39</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-3">Mój sen, moja energia, mój wzrok, moja skóra, moje włosy, mój spokój, moja mgła mózgowa - wszystko jest teraz o wiele lepsze niż było. Absolutnie niesamowite. Stosuję X39 od 3 miesięcy i nie mogę uwierzyć w różnicę.</p>
+                    <div class="flex text-yellow-400">
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="h-12 w-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-green-600 font-bold text-xl">M</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Marek W.</h4>
+                            <p class="text-gray-500 text-sm">Użytkownik X49</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-3">Początkowo byłem sceptyczny, ale po 2 tygodniach używania X49 zauważyłem znaczną poprawę w mojej wydajności na siłowni. Moja wytrzymałość wzrosła, a czas regeneracji skrócił się. Teraz mogę trenować częściej i intensywniej.</p>
+                    <div class="flex text-yellow-400">
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="h-12 w-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-purple-600 font-bold text-xl">E</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Elżbieta S.</h4>
+                            <p class="text-gray-500 text-sm">Użytkownik Y-Age Aeon</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-3">Jako osoba z przewlekłym stresem, Aeon zmienił moje życie. Po tygodniu stosowania zauważyłam znaczną poprawę w jakości snu i ogólnym samopoczuciu. Czuję się spokojniejsza i bardziej zrównoważona w codziennych sytuacjach.</p>
+                    <div class="flex text-yellow-400">
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="h-12 w-12 bg-red-100 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-red-600 font-bold text-xl">J</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Jan T.</h4>
+                            <p class="text-gray-500 text-sm">Użytkownik X39 i X49</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-3">Używam zarówno X39, jak i X49 od 3 miesięcy. Jako osoba po 60-tce zauważyłem ogromną poprawę w moim poziomie energii i mobilności. Mój ból kolana, który był chroniczny przez miesiące, ustąpił po 3 dniach stosowania X39.</p>
+                    <div class="flex text-yellow-400">
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="h-12 w-12 bg-yellow-100 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-yellow-600 font-bold text-xl">K</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Karolina M.</h4>
+                            <p class="text-gray-500 text-sm">Użytkownik Y-Age Glutathione</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-3">Stosuję Y-Age Glutathione od 2 miesięcy i zauważyłam ogromną poprawę w moim ogólnym samopoczuciu. Moja skóra wygląda zdrowiej, a poziom energii znacznie wzrósł. Szczególnie odczuwalny jest efekt detoksykujący.</p>
+                    <div class="flex text-yellow-400">
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="h-12 w-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-indigo-600 font-bold text-xl">P</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Piotr B.</h4>
+                            <p class="text-gray-500 text-sm">Użytkownik Y-Age Carnosine</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-3">Jako osoba aktywna sportowo, Y-Age Carnosine pomógł mi poprawić moją mobilność i elastyczność. Po miesiącu stosowania zauważyłem również poprawę w sile mięśni i równowadze. Polecam szczególnie osobom aktywnym fizycznie.</p>
+                    <div class="flex text-yellow-400">
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="https://lifewave.com/sylwesterk" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 shadow-lg">Dołącz do tysięcy zadowolonych użytkowników</a>
+            
+  <!-- Kontakt Section -->
+    <section id="kontakt" class="py-20 bg-blue-600 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6">Zainteresowany produktami LifeWave?</h2>
+                <p class="text-xl mb-8">Dowiedz się więcej o technologii fototerapii i produktach LifeWave odwiedzając oficjalną stronę producenta.</p>
+                <div>
+                    <a href="https://lifewave.com/sylwesterk" target="_blank" class="bg-white text-blue-600 hover:bg-blue-100 py-3 px-8 rounded-full font-semibold shadow-lg transition duration-300 inline-block">Odwiedź oficjalną stronę LifeWave</a>
+                </div>
+                <p class="mt-6 text-sm">Link referencyjny: https://lifewave.com/sylwesterk</p>
+
+ <div>
+                    <a href="https://www.facebook.com/profile.php?id=100000176467102&rdid=AHCBTbS6HlWnqh4u&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1HWydHM6hU%2F" target="_blank" class="bg-white text-blue-600 hover:bg-blue-100 py-3 px-8 rounded-full font-semibold shadow-lg transition duration-300 inline-block">Odwiedź też mój Facebook</a>
+                </div>
+               
+  
+  <div>
+     <div>
+                    <a href="https://www.tiktok.com/@sylwesterkulawy"" target="_blank" class="bg-white text-blue-600 hover:bg-blue-100 py-3 px-8 rounded-full font-semibold shadow-lg transition duration-300 inline-block">TikTok</a>
+                </div>
+       
+
+  
+  <div>
+  
+     <div>
+                    <a href="https://www.youtube.com/@sylwesterkauza5364" target="_blank" class="bg-white text-blue-600 hover:bg-blue-100 py-3 px-8 rounded-full font-semibold shadow-lg transition duration-300 inline-block">Youtube</a>
+                </div>
+             
+ <p class="mt-6 text-sm"> Zadzwoń do mnie lub napisz sms Sylwek  792 029 432</p>
+
+
+ <div>
+
+
+    <img src="https://scontent-waw2-1.xx.fbcdn.net/v/t39.30808-6/438161054_8358843694131430_1833070040367682926_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=7JNkOWoVe94Q7kNvwEdHlVG&_nc_oc=AdnL6lYAW3v-LEj7zBu5xm69lHLfPI0jyIL8bDJSq1b-m59mDzlpeCBOkHMw_jB_HEY&_nc_zt=23&_nc_ht=scontent-waw2-1.xx&_nc_gid=hMKGGgBBdcOpNBuLAlO1Ig&oh=00_AfKrSKfXghcwsUjEHWhbcVH6VPqPW2hnvYa8VWVU-ylX_A&oe=682E0C29" 
+
+            </div>
+        </div>
+    </section>
+  
+  <div>
